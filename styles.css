@@ -76,9 +76,13 @@ body {
 
 
 .nav__links {
-    display: flex;
+    display: none;
     gap: 30px;
     color: var(--cl-dark-grayish-blue);
+}
+
+.nav__links.active {
+    display: flex;
 }
 .nav__link {
     position: relative;
@@ -107,6 +111,21 @@ body {
     display: flex;
     align-items: center;
     gap: 50px;
+    position: relative;
+}
+
+#shopping-cart-content {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    height: 200px;
+    width: 100%;
+    background-color: aquamarine;
+    display: none;
+}
+
+.logo-cart {
+    cursor: pointer;
 }
 .user__avatar {
     width: 45px;
@@ -143,6 +162,8 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .left-col, .right-col {
@@ -158,10 +179,11 @@ body {
 .right-col {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 30px;
     line-height: 1.5;
 }
-.full-image {
+.full-image, #overlay-selected-image {
     max-width: 500px;
     display: flex;
     justify-content: center;
@@ -169,8 +191,9 @@ body {
     gap: 30px;
 }
 
-.full-image > img {
+:is(.overlay-selected-image, .full-image) > img {
     border-radius: 20px;
+    cursor: pointer;
 }
 
 .thumbnails {
@@ -189,8 +212,18 @@ body {
     cursor: pointer;
 }
 
-.thumbnail:hover{
-    border: 2px solid var(--cl-orange)
+.thumbnail.selected{
+    border: 2px solid var(--cl-orange);
+    position: relative;
+}
+.thumbnail.selected::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(255,255,255, .665);
 }
 
 .thumbnail > img {
@@ -294,4 +327,75 @@ body {
     mask-repeat: no-repeat;
     mask-size: contain;
     background-color: var(--cl-white);
+}
+
+#product-overlay {
+    position: fixed;
+    background-color: rgba(0,0,0,.65);
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.overlay-selected-image {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 650px;
+    position: relative;
+}
+
+.overlay-selected-image > .close-btn {
+    align-self: flex-end;
+    cursor: pointer;
+}
+
+.overlay-selected-image .thumbnails {
+    justify-content: center;
+}
+
+.overlay-selected-image .thumbnail {
+    max-width: 85px;
+}
+
+.btn-previous, .btn-next {
+    position: absolute;
+    top: calc(50% - 40px);
+    padding: 5px;
+    height: 40px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-previous {
+    left: -20px;
+}
+
+.btn-next {
+    right: calc(-20px);
+}
+
+.tbn > svg {
+    user-select: none;
+}
+
+
+@media  screen and (min-width: 990px) {
+    .details-wrapper {
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+
+    .nav__links {
+        display: flex;
+    }
 }

@@ -37,9 +37,12 @@
           </ul>
         </nav>
         <div class="shopping-cart">
-          <div class="logo"><img src="images/icon-cart.svg" alt=""></div>
+          <div class="logo-cart"><img src="images/icon-cart.svg" alt=""></div>
           <div class="user__avatar">
             <img src="images/image-avatar.png" alt="connected user image" />
+          </div>
+          <div id="shopping-cart-content">
+
           </div>
         </div>
         <div class="divider" role="presentation"></div>
@@ -52,7 +55,7 @@
           
           <div class="left-col">
               <div class="full-image">
-                <img src="images/image-product-1.jpg" alt="">
+                <img class="selected-image" src="images/image-product-1.jpg" alt="">
                 <div class="thumbnails">
                   <div class="thumbnail">
                     <img
@@ -129,5 +132,49 @@
         >Frontend Mentor</a
       >. Coded by <a href="#">Jean Gustave NSABIYERA</a>.
     </div>
+
+    <template id="overlay-template">
+        <div id="product-overlay">
+          <div class="overlay-selected-image">
+            <svg width="14" role="button" class="close-btn" height="15" xmlns="http://www.w3.org/2000/svg"><path d="m11.596.782 2.122 2.122L9.12 7.499l4.597 4.597-2.122 2.122L7 9.62l-4.595 4.597-2.122-2.122L4.878 7.5.282 2.904 2.404.782l4.595 4.596L11.596.782Z" fill="hsl(26, 100%, 55%)" fill-rule="evenodd"/></svg>
+              <img class="selected-image" src="" alt="">
+              <div class="thumbnails">
+                <div class="thumbnail">
+                  <img
+                    src="images/image-product-1-thumbnail.jpg"
+                    alt="product 1 thumbnail"
+                  />
+                </div>
+                <div class="thumbnail">
+                  <img
+                    src="images/image-product-2-thumbnail.jpg"
+                    alt="product 2 thumbnail"
+                  />
+                </div>
+                <div class="thumbnail">
+                  <img
+                    src="images/image-product-3-thumbnail.jpg"
+                    alt="product 3 thumbnail"
+                  />
+                </div>
+                <div class="thumbnail">
+                  <img
+                    src="images/image-product-4-thumbnail.jpg"
+                    alt="product 4 thumbnail"
+                  />
+                </div>
+              </div>
+              <button class="btn btn-previous" data-direction="-1">
+                <svg width="12" height="18" xmlns="http://www.w3.org/2000/svg"><path d="M11 1 3 9l8 8" stroke="#1D2026" stroke-width="3" fill="none" fill-rule="evenodd"/></svg>
+              </button>
+              <button class="btn btn-next" data-direction="1">
+                <svg width="13" height="18" xmlns="http://www.w3.org/2000/svg"><path d="m2 1 8 8-8 8" stroke="#1D2026" stroke-width="3" fill="none" fill-rule="evenodd"/></svg>
+              </button>
+
+          </div>
+        </div>
+    </template>
+    <script src="script.js">
+    </script>
   </body>
 </html>
