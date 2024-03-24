@@ -184,7 +184,7 @@ body {
     line-height: 1.5;
 }
 .full-image, #overlay-selected-image {
-    max-width: 500px;
+    max-width: 80vw;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -245,6 +245,7 @@ body {
 .full__prices {
     display: flex;
     gap: 10px;
+    align-self: flex-start;
 }
 
 .discount__percentage {
@@ -276,6 +277,12 @@ body {
 .actions {
     display: flex;
     gap: 10px;
+    flex-direction: column;
+    width: 100%;
+}
+
+.actions > * {
+    flex: 1;
 }
 .btn {
     border: none;
@@ -293,7 +300,12 @@ body {
     color: var(--cl-white);
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
+}
+
+.btn__primary > span {
+    text-wrap: nowrap;
 }
 
 .btn__minus, .btn__plus {
@@ -310,7 +322,6 @@ body {
 
 .counter {
     display: flex;
-    max-width: 100px;
     background-color: var(--cl-light-grayish-blue);
     border-radius: 10px;
     align-items: center;
@@ -397,5 +408,24 @@ body {
 
     .nav__links {
         display: flex;
+    }
+
+    .full-image, #overlay-selected-image {
+        max-width: 500px; 
+    }
+    .right-col {
+        align-items: initial;
+    }
+    .actions {
+        width: auto;
+        flex-direction: row;
+    }
+
+    .actions > * {
+        flex-grow: 0;
+    }
+
+    .counter {
+        max-width: 100px;
     }
 }
