@@ -48,6 +48,15 @@ h1, h2, h3, h4, h5 {
     font-weight: normal;
 }
 
+button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
 body {
     font-size: 1.6em;
     font-family: "Kumbh Sans", sans-serif;
@@ -126,7 +135,54 @@ body {
 
 .logo-cart {
     cursor: pointer;
+    position: relative;
 }
+#cart {
+    position: absolute;
+    left: -170px;
+    top: calc(100% + 15px);
+    width: 350px;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    background-color: var(--cl-white);
+    box-shadow: 0px 0px 2px rgba(0,0,0,.45);
+    z-index: 1;
+    align-items: center;
+    transition: height 150ms linear;
+    border-radius: 5px;
+    height: 0;
+    overflow: hidden;
+    display: none;
+}
+
+
+
+#cart.visible {
+    height: unset;
+    display: flex;
+}
+
+#cart .product-container, #cart .line-1 {
+    display: flex;
+    gap: 10px;
+}
+
+.cart__content, .product-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cart__content img {
+    max-width: 40px;
+}
+
+.product-line {
+    display: flex;
+    gap: 7px;
+}
+
 .user__avatar {
     width: 45px;
     height: 45px;
@@ -210,13 +266,13 @@ body {
     border: 2px solid transparent;
     transition: border 150ms ease-out;
     cursor: pointer;
+    position: relative;
 }
 
 .thumbnail.selected{
     border: 2px solid var(--cl-orange);
-    position: relative;
 }
-.thumbnail.selected::before {
+.thumbnail:is(.selected,:hover)::before {
     content: '';
     width: 100%;
     height: 100%;
@@ -302,6 +358,17 @@ body {
     align-items: center;
     justify-content: center;
     gap: 10px;
+    position: relative;
+}
+
+.btn__primary:hover::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(255,255,255, .665);
 }
 
 .btn__primary > span {
@@ -357,6 +424,8 @@ body {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    max-height: 70%;
+    aspect-ratio: 1/1;
     max-width: 650px;
     position: relative;
 }
@@ -397,6 +466,10 @@ body {
 
 .tbn > svg {
     user-select: none;
+}
+.separator {
+    width: 100%;
+    background: rgba(0,0,0,.045);
 }
 
 

@@ -41,12 +41,18 @@
           </ul>
         </nav>
         <div class="shopping-cart">
-          <div class="logo-cart"><img src="images/icon-cart.svg" alt=""></div>
+          <div class="logo-cart">
+            <button class="cart-btn">
+              <img src="images/icon-cart.svg" alt="cart logo">
+            </button>
+            
+            <div id="cart">
+              <div><strong>Cart</strong></div>
+              <hr class="separator"/>
+            </div>
+          </div>
           <div class="user__avatar">
             <img src="images/image-avatar.png" alt="connected user image" />
-          </div>
-          <div id="shopping-cart-content">
-
           </div>
         </div>
         <div class="divider" role="presentation"></div>
@@ -120,7 +126,7 @@
                   <img src="images/icon-plus.svg" alt="">
                 </button>
               </div>
-              <button class="btn btn__primary">
+              <button class="btn btn__primary" id="add-product-btn">
                <div class="cart__icon"></div>
                 <span>Add to cart</span>
               </button>
