@@ -129,6 +129,12 @@ body {
     background-color: var(--cl-white);
     z-index: 2;
     padding: 20px 60px 20px 20px;
+    translate: -100vw 0;
+    transition: translate 250ms linear;
+}
+
+.mobile nav.open{
+translate: 0;
 }
 
 #close-menu-btn {

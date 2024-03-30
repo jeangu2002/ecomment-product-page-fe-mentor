@@ -158,8 +158,14 @@ function determineMediaSize() {
     root.classList.add(mediaSizeClass);
 }
 
+function toggleMobileMenu() {
+    document.querySelector('nav').classList.toggle('open');
+}
+
 this.window.addEventListener('resize', determineMediaSize);
 
 determineMediaSize();
 
+this.document.querySelector('#toggle-menu-btn').addEventListener('click', toggleMobileMenu);
+this.document.querySelector('#close-menu-btn').addEventListener('click', toggleMobileMenu);
 });
