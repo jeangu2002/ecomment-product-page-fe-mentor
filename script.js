@@ -2,6 +2,7 @@ window.addEventListener('DOMContentLoaded', function() {
 const thumbnails = this.document.querySelectorAll('.thumbnail');
 const selectedImage = this.document.querySelector('.selected-image');
 const cart = this.document.getElementById('cart');
+const itemCountNode = this.document.querySelector('.item__count');
 const selectedProducts = [];
 
 /** thumbnail click behaviour */
@@ -81,6 +82,8 @@ function addProduct() {
         cartContent.innerHTML = '';
         cartContent.textContent = 'Your cart is empty!';
         cart.insertAdjacentElement('beforeend', cartContent);
+        itemCountNode.innerHTML = '';
+        itemCountNode.classList.toggle('visible', false);
     } else if(numberOfProducts > 0) {
        const cartContent =  document.querySelector('.cart__content');
        cartContent.innerHTML ='';
@@ -88,7 +91,9 @@ function addProduct() {
                     
                         <div class="product-line">
                                 <img src="images/image-product-1-thumbnail.jpg" alt="selected product thumbnail">
-                                <div><span>Fall Limited Edition Sneakers <strong>${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(
+                                <div><span>Fall Limited Edition Sneakers ${`${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(
+                                    125,
+                                  )} x ${numberOfProducts}`} <strong>${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(
                                     (numberOfProducts * 125),
                                   ) }</strong></span></div>
                                 <button>
@@ -99,7 +104,9 @@ function addProduct() {
                          <span>Checkout</span>
                        </button>                 
                 </div>`;
-                cartContent.insertAdjacentHTML('beforeend', cartProductHtml)
+                cartContent.insertAdjacentHTML('beforeend', cartProductHtml);
+                itemCountNode.innerHTML = `${numberOfProducts}`;
+                itemCountNode.classList.toggle('visible', true);
     }   
 
    
@@ -113,14 +120,16 @@ function incrementCounter() {
     let counter = document.querySelector('#counter-value');
     let newValue = +counter.getAttribute('value');
     counter.setAttribute('value', Math.max(0, ++newValue))
-    addProduct(newValue);
 }
 
 function decrementCounter() {
     let counter = document.querySelector('#counter-value');
     let newValue = +counter.getAttribute('value');
     counter.setAttribute('value', Math.max(0, --newValue));
-    addProduct(newValue);
+}
+
+function isOverlayOpen() {
+    return !!document.getElementById('product-overlay');
 }
 
 
@@ -129,10 +138,28 @@ this.document.querySelector('.btn__plus').addEventListener('click', incrementCou
 
 this.document.querySelector('.cart-btn').addEventListener('click', showCart);
 
-this.document.getElementById('add-product-btn').addEventListener('click', () => addProduct(1));
+this.document.getElementById('add-product-btn').addEventListener('click', () => addProduct());
 
 addProduct();
 
+this.document.querySelectorAll('a[href="#"]').forEach(anchor => anchor.addEventListener('click', e => e.preventDefault()))
 
+this.document.addEventListener('keydown', (e) => {
+    if (e.keyCode == 27 && isOverlayOpen()) {
+        document.getElementById('product-overlay').remove();
+    }
+})
+
+function determineMediaSize() {
+    const root = this.document.querySelector('html');
+    root.classList.remove('mobile');
+    root.classList.remove('desktop');
+   const mediaSizeClass = this.window.matchMedia("(min-width: 990px)").matches ? 'desktop' : 'mobile';
+    root.classList.add(mediaSizeClass);
+}
+
+this.window.addEventListener('resize', determineMediaSize);
+
+determineMediaSize();
 
 });
