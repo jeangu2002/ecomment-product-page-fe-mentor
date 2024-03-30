@@ -154,7 +154,7 @@ function determineMediaSize() {
     const root = this.document.querySelector('html');
     root.classList.remove('mobile');
     root.classList.remove('desktop');
-   const mediaSizeClass = this.window.matchMedia("(min-width: 990px)").matches ? 'desktop' : 'mobile';
+   const mediaSizeClass = this.window.matchMedia("(max-width: 990px)").matches ? 'mobile' : 'desktop';
     root.classList.add(mediaSizeClass);
 }
 

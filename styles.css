@@ -137,12 +137,12 @@ body {
 translate: 0;
 }
 
-#close-menu-btn {
+#toggle-menu-btn, #close-menu-btn {
     display: none;
 }
 
-.mobile #close-menu-btn{
-    display: block;
+.mobile #toggle-menu-btn, .mobile #close-menu-btn{
+    display: inline-block;
     align-self: flex-start;
 }
 
